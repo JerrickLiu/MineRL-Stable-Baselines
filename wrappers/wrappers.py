@@ -2,7 +2,7 @@ import gym
 from collections import OrderedDict
 import numpy as np
 
-"""Code heavily based on MineRL baselines repo (https://github.com/minerllabs/baselines) with some slight modifications to match stable-baselines
+"""Code heavily based on MineRL baselines repo (https://github.com/minerllabs/baselines) with some slight modifications to match stable-baselines"""
 
 class ObtainPoVWrapper(gym.ObservationWrapper):
     """Obtain 'pov' value (current game display) of the original observation."""
