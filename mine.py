@@ -24,6 +24,7 @@ args = parser.parse_args()
 
 os.makedirs(args.log_dir, exist_ok=True)
 
+"""When running make_vec_env, Ctrl+B on the function to add the wrappers after you make the environment."""
 env = make_vec_env(env_id=args.env, n_envs=args.n_cpu)
 
 
