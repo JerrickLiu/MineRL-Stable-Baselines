@@ -8,25 +8,11 @@ import numpy as np
 
 from stable_baselines.common.policies import CnnPolicy, MlpPolicy
 from stable_baselines import PPO1, PPO2
-from stable_baselines.common.vec_env import DummyVecEnv
 from stable_baselines.common.cmd_util import make_vec_env
-
-
-import chainer
-
-import chainerrl
-from chainerrl.wrappers import ContinuingTimeLimit
-from chainerrl.wrappers.atari_wrappers import FrameStack, ScaledFloatFrame
 
 import sys
 sys.path.append(os.path.abspath(os.path.join(__file__, os.pardir)))
-from baselines import utils
 
-from baselines.q_functions import NatureDQNHead, A3CFF
-from baselines.env_wrappers import (
-    SerialDiscreteActionWrapper, CombineActionWrapper, SerialDiscreteCombineActionWrapper,
-    ContinuingTimeLimitMonitor,
-    MoveAxisWrapper, FrameSkip, ObtainPoVWrapper, PoVWithCompassAngleWrapper, GrayScaleWrapper)
 
 parser = argparse.ArgumentParser()
 
