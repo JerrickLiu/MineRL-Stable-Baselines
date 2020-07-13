@@ -38,5 +38,5 @@ else:
 env = SerialDiscreteActionWrapper(env)
 ```
 
-For some reason, you must add it to the helper function stable baselines provides instead of directly creating the function yourself in your own code. That is what worked for me, at least. If someone could help optimize this, pull requests are helpful. 
+For some reason, you must add the wrappers to the helper function stable baselines provides instead of directly creating the function yourself and adding the wrappers in your own code. That is what worked for me, at least. If someone could help optimize this, pull requests are helpful. 
 
