@@ -21,3 +21,22 @@ Stable-baselines contains various reinforcemnet learning algorithms to begin you
 
 Once wrapped, stable-baselines repo of algorithms are able to train on the MineRL dataset. We also made use of vectorized enviromnets so we could multiprocess and simultaneously train multiple instances of the MineRL environments.
 
+## Adding wrappers to make_vec_env
+
+In the function stable-baselines function make_vec_env, add the following wrappers after making the environment
+
+```python
+
+env = gym.make(env_id)
+
+if env_id.startswith("MineRLNavigate"):
+  env = PoVWithCompassAngleWrapper(env)
+  
+else:
+  env = ObtainPoVWrapper(env)
+  
+env = SerialDiscreteActionWrapper(env)
+```
+
+For some reason, you must add the wrappers to the helper function stable baselines provides instead of directly creating the function yourself and adding the wrappers in your own code. That is what worked for me, at least. If someone could help optimize this, pull requests are helpful. 
+
