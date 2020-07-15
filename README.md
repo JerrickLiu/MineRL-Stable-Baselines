@@ -3,14 +3,16 @@
 This is the repo for my summer research project involving the MineRL dataset and the stable-baselines repo of algorithms. There are some wrappers taken from ChainerRL as well 
 
 ## Requirements 
-1. Stable-baselines
-2. MineRL
+1. OpenAI Gym
+2. Stable-baselines
+3. MineRL
 
 ## Installation
 
-Go to [stable-baselines](https://github.com/hill-a/stable-baselines)'s repo and [MineRL](https://minerl.io/docs/tutorials/index.html) to install some prerequisites for the libraries. Once done, use the package manager [pip](https://pip.pypa.io/en/stable/) to install stable-baselines and MineRL.
+Before MineRL, you can play around with [OpenAI Gym](https://gym.openai.com/) to get a feel for the RL environment. Go to [stable-baselines](https://github.com/hill-a/stable-baselines)'s repo and [MineRL](https://minerl.io/docs/tutorials/index.html) to install some prerequisites for the libraries. Once done, use the package manager [pip](https://pip.pypa.io/en/stable/) to install stable-baselines and MineRL.
 
 ```bash
+pip3 install gym
 pip3 install stable-baselines[mpi]
 pip3 install --upgrade minerl
 ```
