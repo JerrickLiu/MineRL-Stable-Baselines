@@ -18,19 +18,22 @@ sys.path.append(os.path.abspath(os.path.join(__file__, os.pardir)))
 parser = argparse.ArgumentParser()
 
 parser.add_argument('--env', type=str, default='MineRLTreechop-v0')
-parser.add_argument('--log_dir', type=str, default=None)
-parser.add_argument('--n_cpu', type=int, default=1)
+parser.add_argument('--log_dir', type=str, default='/home/jliu/Desktop/RL/baselines/general/chainerrl/tensorboard')
+parser.add_argument('--n_cpu', type=int, default=10)
 parser.add_argument('--n_timesteps', type=int, default=100000000000)
-parser.add_argument('--save_dir', type=str, default=None)
+parser.add_argument('--save_dir', type=str, default='/home/jliu/Desktop/RL/baselines/general/chainerrl/models')
 args = parser.parse_args()
 
-os.makedirs(args.log_dir, exist_ok=True)
+#os.makedirs(args.log_dir, exist_ok=True)
+#os.makedirs(args.save_dir, exist_ok=True)
 
-"""When running make_vec_env, Ctrl+B on the function to add the wrappers after you make the environment."""
+"""When running make_vec_env, go to the declaration of the function to add the wrappers after you make the environment."""
 env = make_vec_env(env_id=args.env, n_envs=args.n_cpu, seed=23)
 
 
+
 model = PPO2(CnnPolicy, env, verbose=1, tensorboard_log=args.log_dir).learn(total_timesteps=args.n_timesteps)
+
 model.save(args.save_dir)
 
 eval_env = gym.make(args.env)
