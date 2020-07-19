@@ -1,9 +1,9 @@
 FROM nvidia/cuda:10.2-base-ubuntu18.04
 MAINTAINER Jerrick Liu
 
-LABEL description="Practice docker image"
+LABEL description="Running MineRL with Stable baselines"
 
-WORKDIR /home/jliu/Desktop/RL/baselines/general/chainerrl
+WORKDIR /current/project/path
 
 RUN apt-get update && apt-get install -y \
 cmake \
@@ -22,13 +22,13 @@ rm -rf /var/lib/apt/lists/*
 RUN pip3 install stable-baselines[mpi]
 RUN pip3 install --upgrade minerl
 
-COPY baselines/ ./baselines
+COPY project_dir/ ./project_dir
 COPY requirements.txt .
 RUN pip3 install --no-cache-dir -r requirements.txt
 COPY jdk1.8.0_261/ ./jdk1.8.0_261
 
-ENV JAVA_HOME="/home/jliu/Desktop/RL/baselines/general/chainerrl/jdk1.8.0_261"
+ENV JAVA_HOME="/path/to/your/java/installation/"
 
 
 
-RUN xvfb-run python3 /home/jliu/Desktop/RL/baselines/general/chainerrl/baselines/mine.py
+RUN python3 /path/to/your/script
