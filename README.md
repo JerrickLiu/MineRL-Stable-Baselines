@@ -42,3 +42,7 @@ env = SerialDiscreteActionWrapper(env)
 
 For some reason, you must add the wrappers to the helper function stable baselines provides instead of directly creating the function yourself and adding the wrappers in your own code. That is what worked for me, at least. If someone could help optimize this, pull requests are helpful. 
 
+## Headless mode
+
+If you're funning without a head, that is without a physical display (for example through an SSH connection like I was), you can write a dockerfile to run it or use xvfb-run. Note that xvfb-run isn't compatible with NVIDIA drivers so you can alos use a VCN server or just go the docker route like I did. I provided an example dockerifle that I wrote
+
