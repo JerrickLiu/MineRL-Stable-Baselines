@@ -19,13 +19,13 @@ pip3 install --upgrade minerl
 
 ## Usage
 
-Stable-baselines contains various reinforcemnet learning algorithms to begin your training. However, it is not compatible with dictionary observation and action spaces. Thus, wrappers are needed to discretize those spaces. The wrappersr are also contained in this repo under the folder "wrappers." Those wrappers were based of [this](https://github.com/minerllabs/baselines/tree/master/general/chainerrl/baselines). 
+Stable-baselines contains various reinforcement learning algorithms to begin your training. However, it is not compatible with dictionary observation and action spaces. Thus, wrappers are needed to discretize those spaces. The wrappersr are also contained in this repo under the folder "wrappers." Those wrappers were based of [this](https://github.com/minerllabs/baselines/tree/master/general/chainerrl/baselines). 
 
 Once wrapped, stable-baselines repo of algorithms are able to train on the MineRL dataset. We also made use of vectorized enviromnets so we could multiprocess and simultaneously train multiple instances of the MineRL environments.
 
 ## Adding wrappers to make_vec_env
 
-In the function stable-baselines function make_vec_env, add the following wrappers after making the environment
+In the stable-baselines function make_vec_env, add the following wrappers after making the environment
 
 ```python
 
