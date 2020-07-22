@@ -1,34 +1,38 @@
 FROM nvidia/cuda:10.2-base-ubuntu18.04
+
+
 MAINTAINER Jerrick Liu
 
-LABEL description="Running MineRL with Stable baselines"
+LABEL description="Running MineRL headless"
 
-WORKDIR /current/project/path
+WORKDIR /current/project/path/
 
 RUN apt-get update && apt-get install -y \
 cmake \
+openjdk-8-jdk \
+openssh-server \
+libxrender-dev \
 libopenmpi-dev \
-python3-dev \
 zlib1g-dev \
+x11-xserver-utils \
 xvfb \
-python3 \
-python3-pip \
-python3-setuptools \
-python3-venv \
-&& \
-apt-get clean && \
-rm -rf /var/lib/apt/lists/*
+build-essential python3.6 python3.6-dev python3-pip python3.6-venv
+
+
+# update pip
+RUN python3.6 -m pip install pip --upgrade && \
+        python3.6 -m pip install wheel
 
 RUN pip3 install stable-baselines[mpi]
-RUN pip3 install --upgrade minerl
+RUN pip3 install --upgrade minerl --user
 
-COPY project_dir/ ./project_dir
+COPY current/project/path/ ./project
 COPY requirements.txt .
-RUN pip3 install --no-cache-dir -r requirements.txt
-COPY jdk1.8.0_261/ ./jdk1.8.0_261
-
-ENV JAVA_HOME="/path/to/your/java/installation/"
+RUN pip3 install -r requirements.txt
 
 
+RUN xvfb-run python3 /path/to/script
 
-RUN python3 /path/to/your/script
+
+
+
